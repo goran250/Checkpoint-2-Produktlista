@@ -22,7 +22,6 @@ namespace Checkpoint_2_Produktlista
 
                 string answer = Console.ReadLine();
 
-
                 if (answer.ToLower().Trim() == "list")
                 {
                     ShowProducts(products);
@@ -76,12 +75,28 @@ namespace Checkpoint_2_Produktlista
         static void ShowProducts(List<Product> products)
         {
             Console.WriteLine("\n------------------------------------------------------------");
-            
 
-            int textLength = "Category".Length;
+            // GetLongestTextLength() findd the longest word among product Category, product Name and product Price. 
+            // This i to get the padding right
+            int textLength = GetLongestTextLength(products) + 3;
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Category".PadRight(textLength) + "Product".PadRight(textLength) + "Price".PadRight(textLength));
+            Console.ResetColor();
+            // Write the products too a table
+            foreach (Product product in products) {
+                Console.WriteLine(product.Category.PadRight(textLength) + product.Name.PadRight(textLength) + product.Price.ToString().PadRight(textLength));
+            }
+
+            Console.WriteLine("------------------------------------------------------------");
+        }
+
+        static int GetLongestTextLength(List<Product> products)
+        {
+            int textLength = "Category".Length; // Category is longest among the header items
             int i = 0;
 
-            do  // Find the longest word among product Category, product Name and product Price
+            do  // Find the longest word among product Category, product Name and product Price.
             {
                 if (products[i].Category.Length > textLength)
                 {
@@ -101,17 +116,7 @@ namespace Checkpoint_2_Produktlista
                 i++;
             } while (i < products.Count);
 
-            int padding = textLength + 3;
-
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Category".PadRight(padding) + "Product".PadRight(padding) + "Price".PadRight(padding));
-            Console.ResetColor();
-            // Write the products too a table
-            foreach (Product product in products) {
-                Console.WriteLine(product.Category.PadRight(padding) + product.Name.PadRight(padding) + product.Price.ToString().PadRight(padding));
-            }
-
-            Console.WriteLine("------------------------------------------------------------");
+            return textLength;
         }
     }
 
