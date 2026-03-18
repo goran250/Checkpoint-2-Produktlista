@@ -74,7 +74,7 @@ namespace Checkpoint_2_Produktlista
 
         static void ShowProducts(List<Product> products)
         {
-            Console.WriteLine("\n------------------------------------------------------------");
+            Console.WriteLine("\n--------------------------------------------------------------------------");
 
             // GetLongestTextLength() findd the longest word among product Category, product Name and product Price. 
             // This i to get the padding right
@@ -88,7 +88,7 @@ namespace Checkpoint_2_Produktlista
                 Console.WriteLine(product.Category.PadRight(textLength) + product.Name.PadRight(textLength) + product.Price.ToString().PadRight(textLength));
             }
 
-            Console.WriteLine("------------------------------------------------------------");
+            Console.WriteLine("--------------------------------------------------------------------------");
         }
 
         static int GetLongestTextLength(List<Product> products)
