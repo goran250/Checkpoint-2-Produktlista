@@ -31,12 +31,12 @@ namespace Checkpoint_2_Produktlista
                     Console.WriteLine(" To list the products enter: \"L\".");
                     Console.WriteLine(" To search for a product by name enter: \"S\".");
                     Console.WriteLine(" To quit enter: \"Q\".");
-                    Console.ResetColor();                
+                    Console.ResetColor();
                 }
                 else if (answer.ToLower().Trim() == "s")
                 {
                     products.SearchForProductByName();
-                    products.ShowProducts(true); 
+                    products.ShowProducts(true);
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("\n To enter another product just press \"Enter\"");
                     Console.WriteLine(" To list the products enter: \"L\".");
@@ -68,7 +68,7 @@ namespace Checkpoint_2_Produktlista
             } while (true);
         }
     }
-    
+
 
     class Products
     {
@@ -91,15 +91,15 @@ namespace Checkpoint_2_Produktlista
             product.Name = GetValidatedStringFromConsole("Product name");
 
             bool isValidInteger;
-            
+
             do
             {
                 Console.Write(" Enter a price of the product: ");
                 isValidInteger = int.TryParse(Console.ReadLine(), out int tempPrice);
                 product.Price = tempPrice;
-                
+
                 Console.ForegroundColor = ConsoleColor.Red;
-                if (isValidInteger == false) 
+                if (isValidInteger == false)
                 {
                     Console.WriteLine(" Price can only contain digits and can't be empty.");
                 }
@@ -144,16 +144,16 @@ namespace Checkpoint_2_Produktlista
                 }
 
                 Console.WriteLine(" " + product.Category.PadRight(textLength) + product.Name.PadRight(textLength) + product.Price.ToString().PadLeft(totalPrice.ToString().Length + 2));
-                
+
                 if (product.HighlightThis)
                 {
                     Console.ResetColor();
                     product.HighlightThis = false;
                 }
-                    
+
             }
 
-            Console.WriteLine("\n" + " Total Amount:  ".PadLeft(2*textLength) + totalPrice.ToString().PadLeft(totalPrice.ToString().Length + 2));
+            Console.WriteLine("\n" + " Total Amount:  ".PadLeft(2 * textLength) + totalPrice.ToString().PadLeft(totalPrice.ToString().Length + 2));
 
             Console.WriteLine("--------------------------------------------------------------------------");
         }
@@ -166,7 +166,8 @@ namespace Checkpoint_2_Produktlista
 
             bool found = false;
 
-            do { 
+            do
+            {
                 string nameToSearchFor = Console.ReadLine();
 
                 int index = ProductsList.FindIndex(p => p.Name.Contains(nameToSearchFor));
@@ -182,7 +183,7 @@ namespace Checkpoint_2_Produktlista
             } while (found == false);
         }
 
-        private string GetValidatedStringFromConsole( string variableName)
+        private string GetValidatedStringFromConsole(string variableName)
         {
             Console.Write(" Enter a " + variableName + ": ");
             string result = Console.ReadLine();
@@ -193,16 +194,17 @@ namespace Checkpoint_2_Produktlista
                 Console.WriteLine(" " + variableName + " can't be an empty string");
                 Console.ResetColor();
                 Console.Write(" Enter a " + variableName + ": ");
-                result  = Console.ReadLine();
+                result = Console.ReadLine();
             }
 
             return result;
         }
-        
+
         private int GetTotalPrice()
         {
             int totalPrice = 0;
-            foreach (Product product in ProductsList) {
+            foreach (Product product in ProductsList)
+            {
                 totalPrice += product.Price;
             }
 
@@ -210,7 +212,7 @@ namespace Checkpoint_2_Produktlista
         }
 
         private int GetLongestTextLength()
-        {                    
+        {
             int textLength = " Total amount:".Length; // "Total amount:" is longest among the header items
             int i = 0;
 
