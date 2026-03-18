@@ -5,6 +5,7 @@ namespace Checkpoint_2_Produktlista
 {
     internal class Program
     {
+        // Göran R
         static void Main(string[] args)
         {
             Products products = new Products();
