@@ -82,7 +82,6 @@ namespace Checkpoint_2_Produktlista
                     Console.ResetColor();
                     product.HighlightThis = false;
                 }
-
             }
 
             Console.WriteLine("\n" + " Total Amount:  ".PadLeft(2 * textLength) + totalPrice.ToString().PadLeft(totalPrice.ToString().Length + 3));
