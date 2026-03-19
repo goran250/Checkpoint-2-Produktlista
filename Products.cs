@@ -65,13 +65,13 @@ namespace Checkpoint_2_Produktlista
             }
 
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(" Category".PadRight(textLength) + "Product".PadRight(textLength) + "Price".PadLeft(totalPrice.ToString().Length + 2));
+            Console.WriteLine(" Category".PadRight(textLength) + " Product".PadRight(textLength) + "Price".PadLeft(totalPrice.ToString().Length + 3));
             Console.ResetColor();
             // Write the products too a table
             foreach (Product product in ProductsList)
             {
                 if (product.HighlightThis)
-                {
+                {                 
                     Console.ForegroundColor = ConsoleColor.Magenta;
                 }
 
@@ -85,7 +85,7 @@ namespace Checkpoint_2_Produktlista
 
             }
 
-            Console.WriteLine("\n" + " Total Amount:  ".PadLeft(2 * textLength) + totalPrice.ToString().PadLeft(totalPrice.ToString().Length + 2));
+            Console.WriteLine("\n" + " Total Amount:  ".PadLeft(2 * textLength) + totalPrice.ToString().PadLeft(totalPrice.ToString().Length + 3));
 
             Console.WriteLine(" --------------------------------------------------------------------------");
         }
@@ -111,7 +111,9 @@ namespace Checkpoint_2_Produktlista
                 }
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("\n No product with that name exist: Please enter a new product name: ");
+                    Console.ResetColor();
                 }
             } while (found == false);
         }
